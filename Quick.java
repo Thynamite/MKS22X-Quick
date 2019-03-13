@@ -5,7 +5,19 @@ public class Quick{
 /*return the value that is the kth smallest value of the array. k=0 is the smallest
 */
 public static int quickselect(int[] data, int k) {
-  
+   int index = k;
+   int s = 0;
+   int e = data.length;
+   int returnIndex = partition(data,s,e);
+   while (index != returnIndex) {
+     if (index > returnIndex) {
+       returnIndex = partition(data,returnIndex,e);
+     }
+     else {
+       returnIndex = partition(data,s,returnIndex);
+     }
+   }
+   return data[returnIndex];
 }
 
 /*Modify the array to be in increasing order.
