@@ -60,6 +60,19 @@ public class Quick{
         data[end] = storage;
         end--;
       }
+      else if (data[start] == data[starter]) {
+        int check = r.nextInt(1);
+        if (check == 0) {
+          storage = data[start];
+          data[start] = data[end];
+          data[end] = storage;
+          end--;
+        }
+        else {
+          start++;
+        }
+
+      }
       else {
         start++;
       }
