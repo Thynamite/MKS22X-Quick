@@ -6,28 +6,37 @@ public class Quick{
 */
 
   public static int quickselect(int[] data, int k) {
-  return quickSelectH(data,k,0,data.length-1);
-}
+    return quickSelectH(data,k,0,data.length-1);
+  }
 
   private static int quickSelectH(int[] data, int k, int start, int end) {
-  int index = partition(data,start,end);
-  if (index == k) {
-    return data[k];
-  }
-  else {
-    if (index > k) {
-      return quickSelectH(data, k, start, index);
+    int index = partition(data,start,end);
+      if (index == k) {
+      return data[k];
     }
-    else {
-      return quickSelectH(data,k,index,end);
+      else {
+      if (index > k) {
+        return quickSelectH(data, k, start, index);
+      }
+      else {
+        return quickSelectH(data,k,index,end);
+      }
     }
   }
-}
 /*Modify the array to be in increasing order.
 */
   public static void quicksort(int[] data) {
+    quicksortH(data,0,data.length-1);
+  }
 
-}
+  private static void quicksortH(int[] data, int low, int high) {
+    if (low >= high) {
+      return;
+    }
+    int pivot = partition(data,low,high);
+    quicksortH(data,low,pivot-1);
+    quicksortH(data,pivot+1,high);
+  }
 
   public static int partition (int [] data, int start, int end) {
 
