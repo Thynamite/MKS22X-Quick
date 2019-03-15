@@ -6,7 +6,7 @@ public class Quick{
 */
 
 public static int quickselect(int[] data, int k) {
-
+  return quickSelectH(data,k,0,data.length-1);
 }
 
 private static int quickSelectH(int[] data, int k, int start, int end) {
@@ -15,7 +15,12 @@ private static int quickSelectH(int[] data, int k, int start, int end) {
     return data[k];
   }
   else {
-    
+    if (index > k) {
+      return quickSelectH(data, k, start, index-1);
+    }
+    else {
+      return quickSelectH(data,k,index+1,end);
+    }
   }
 }
 /*Modify the array to be in increasing order.
