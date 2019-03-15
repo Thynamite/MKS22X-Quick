@@ -43,7 +43,10 @@ public class Quick{
     Random r = new Random();
     int starter = start;
     int ender = end;
-    int pivot = r.nextInt(end-start+1) +start;
+    int pivot1 = r.nextInt(end-start+1) +start;
+    int pivot2 = r.nextInt(end-start+1) +start;
+    int pivot3 = r.nextInt(end-start+1) +start;
+    int pivot = median(pivot1,pivot2,pivot3);
     int storage;
     //System.out.println("pivot " + pivot);
     storage = data[pivot];
@@ -75,6 +78,16 @@ public class Quick{
       return start-1;
     }
 
+  }
+
+  private static int median(int f, int s, int t) {
+    if ((f >= s && f <= t) || (f <= s && f >= t)) {
+      return f;
+    }
+    if ((s >= f && s <= t) || (s <= f && s >= t)) {
+      return s;
+    }
+    return t;
   }
 
 }
