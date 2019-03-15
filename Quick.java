@@ -6,23 +6,18 @@ public class Quick{
 */
 
 public static int quickselect(int[] data, int k) {
-  int s = 0;
-  int e = data.length-1;
-  int index = partition(data,s,e);
-  while (k != index) {
-    System.out.println(index);
-    if (k > index) {
-      s = index+1;
-      index = partition(data,index+1,e);
-    }
-    else {
-      e = index-1;
-      index = partition(data,s,index-1);
-    }
-  }
-  return data[index];
+
 }
 
+private static int quickSelectH(int[] data, int k, int start, int end) {
+  int index = partition(data,start,end);
+  if (index == k) {
+    return data[k];
+  }
+  else {
+    
+  }
+}
 /*Modify the array to be in increasing order.
 */
 public static void quicksort(int[] data) {
@@ -36,7 +31,7 @@ public static int partition (int [] data, int start, int end) {
     int ender = end;
     int pivot = r.nextInt(end-start+1); //this needs to be changed, or updated to median
     int storage;
-    System.out.println("pivot " + pivot);
+    //System.out.println("pivot " + pivot);
     storage = data[pivot];
     data[pivot] = data[starter];
     data[starter] = storage;
