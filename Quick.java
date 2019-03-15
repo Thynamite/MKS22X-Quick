@@ -5,36 +5,36 @@ public class Quick{
 /*return the value that is the kth smallest value of the array. k=0 is the smallest
 */
 
-public static int quickselect(int[] data, int k) {
+  public static int quickselect(int[] data, int k) {
   return quickSelectH(data,k,0,data.length-1);
 }
 
-private static int quickSelectH(int[] data, int k, int start, int end) {
+  private static int quickSelectH(int[] data, int k, int start, int end) {
   int index = partition(data,start,end);
   if (index == k) {
     return data[k];
   }
   else {
     if (index > k) {
-      return quickSelectH(data, k, start, index-1);
+      return quickSelectH(data, k, start, index);
     }
     else {
-      return quickSelectH(data,k,index+1,end);
+      return quickSelectH(data,k,index,end);
     }
   }
 }
 /*Modify the array to be in increasing order.
 */
-public static void quicksort(int[] data) {
+  public static void quicksort(int[] data) {
 
 }
 
-public static int partition (int [] data, int start, int end) {
+  public static int partition (int [] data, int start, int end) {
 
     Random r = new Random();
     int starter = start;
     int ender = end;
-    int pivot = r.nextInt(end-start+1); //this needs to be changed, or updated to median
+    int pivot = r.nextInt(end-start+1) +start;
     int storage;
     //System.out.println("pivot " + pivot);
     storage = data[pivot];
