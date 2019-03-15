@@ -38,6 +38,11 @@ public class Quick{
     quicksortH(data,pivot+1,high);
   }
 
+  private static void swapper(int[] data, int index1, int index2) {
+    int storage = data[index1];
+    data[index1] = data[index2];
+    data[index2] = storage;
+  }
   public static int partition (int [] data, int start, int end) {
 
     Random r = new Random();
@@ -47,31 +52,23 @@ public class Quick{
     int pivot2 = r.nextInt(end-start+1) +start;
     int pivot3 = r.nextInt(end-start+1) +start;
     int pivot = median(pivot1,pivot2,pivot3);
-    int storage;
     //System.out.println("pivot " + pivot);
-    storage = data[pivot];
-    data[pivot] = data[starter];
-    data[starter] = storage;
+    swapper(data,pivot,starter);
     start++;
     while (start != end) {
       if (data[start] > data[starter]) {
-        storage = data[start];
-        data[start] = data[end];
-        data[end] = storage;
+        swapper(data,start,end);
         end--;
       }
       else if (data[start] == data[starter]) {
         int check = r.nextInt(1);
         if (check == 0) {
-          storage = data[start];
-          data[start] = data[end];
-          data[end] = storage;
+          swapper(data,start,end);
           end--;
         }
         else {
           start++;
         }
-
       }
       else {
         start++;
@@ -79,15 +76,11 @@ public class Quick{
     }
 
     if (data[start] < data[starter]) {
-      storage = data[start];
-      data[start] = data[starter];
-      data[starter] = storage;
+      swapper(data,start,starter);
       return start;
     }
     else {
-      storage = data[start-1];
-      data[start-1] = data[starter];
-      data[starter] = storage;
+      swapper(data,start-1,starter);
       return start-1;
     }
 
