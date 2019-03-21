@@ -69,9 +69,14 @@ public class Quick{
     if (low >= high) {
       return;
     }
-    int pivot = partition(data,low,high);
-    quicksortH(data,low,pivot-1);
-    quicksortH(data,pivot+1,high);
+    else if (data.length < 100) {
+      insertionSort(data);
+    }
+    else {
+      int pivot = partition(data,low,high);
+      quicksortH(data,low,pivot-1);
+      quicksortH(data,pivot+1,high);
+    }
   }
 
   private static void swapper(int[] data, int index1, int index2) {
